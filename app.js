@@ -2,7 +2,6 @@ const express = require('express');
 const middle1 = require("./middleware1")
 const { secret } = require("./secret")
 const app = express();
-const port = 3000;
 
 const users = []
 
@@ -21,7 +20,7 @@ app.use(a_middleware_function);
 app.use(middle1.middle1)
 app.use(express.json());
 
-app.use(secret)
+app.use('/secret', secret)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -42,6 +41,4 @@ app.get('/secret', (req, res) => {
     res.status(200).send("you are in secret area")
 })
 
-app.listen(port, () => {
-  console.log(`Application exemple à l'écoute sur le port ${port}!`)
-});
+module.exports = app
