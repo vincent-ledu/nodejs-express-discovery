@@ -116,3 +116,7 @@ Introduction to middleware (fr): https://developer.mozilla.org/fr/docs/Learn/Ser
 * Switch order of middle1 & middle2, and watch the log
 
 * On /secret, authorize access only to request that have an header "secret: OK"
+
+## Mocha / Chai
+
+See test/kata2.test.js
