@@ -37,3 +37,21 @@ describe('secret endpoints', () => {
     expect(res.statusCode).to.be.equals(200)
   })
 })
+
+describe('delete a user', () => {
+  it('should return 200 if user deleted exists', async ()=> {
+    await request(app)
+      .post('/users')
+      .send({
+        username: "bob"
+      })
+    const res = await request(app).delete('/users/1')
+
+    expect(res.statusCode).to.be.equals(200)
+  })
+  it('should return 204 if deleted user doesnt exists', async () => {
+    const res = await request(app).delete('/users/4233234234')
+
+    expect(res.statusCode).to.be.equals(204)
+  })
+})
