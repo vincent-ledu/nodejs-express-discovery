@@ -10,6 +10,9 @@
 1. Handle POST request
     1. Routing
     2. Parse args
+1. Handle DELETE request
+    1. Routing
+    2. Parse args
 1. Express middleware
 
 
@@ -92,6 +95,17 @@ app.post('/users', (req, res) => {
 })
 ```
 
+## Handle DELETE request
+### Routing
+
+* Create route DELETE /users/:id, to handle such requests: 
+```shell
+curl -X DELETE -H "Content-Type: application/json" http://localhost:3000/users/1 
+```
+
+### Parse args
+
+Get the id with ```req.params.id``` and delete the user if exists
 
 ## Express middleware
 
