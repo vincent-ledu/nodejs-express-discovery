@@ -34,12 +34,19 @@ app.post('/users', (req, res) => {
 
 app.get('/users', (req, res) => {
   console.log(users)
-  res.status(200).json(users)
+  console.log(req.query)
+  if (req.query.err) {
+    let err = req.query.err
+    res.status(500).json(`error: ${err}`)
+  } else {
+    res.status(200).json(users)
+  }
 })
 
 app.delete('/users/:id', (req, res) => {
   let id = parseInt(req.params.id)
-  if (users.length >= id) {
+  console.log(`users.length: ${users.length}`)
+  if (users.length >= parseInt(id)) {
     users.slice(id, id+1)
     res.status(200).send("OK")
   } else {
